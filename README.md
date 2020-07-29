@@ -37,4 +37,4 @@ To exercise some concepts learnt in 'Unit 02' as:
   - A function that logs in the console an array containing the shortest city name for each state, followed by the state "sigla" value (order aphabetically and return first entry in case of tie).
   - A function that logs in the console the longest city name, followed by the state "sigla" value (order aphabetically and return first entry in case of tie).
   - A function that logs in the console the shortest city name, followed by the state "sigla" value (order aphabetically and return first entry in case of tie).
-- The project execution consists in running all methods in sequence and exiting.
+- The project execution consists in running all methods in sequence.
