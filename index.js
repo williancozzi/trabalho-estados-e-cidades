@@ -24,10 +24,10 @@
 // de cada estado, seguida de seu UF. Por exemplo: [“Nome da Cidade – UF”, “Nome
 // da Cidade – UF”, ...].
 
-// ()7.Criar um método que imprima no console a cidade de maior nome entre todos os
+// (X)7.Criar um método que imprima no console a cidade de maior nome entre todos os
 // estados, seguido do seu UF. Exemplo: “Nome da Cidade - UF".
 
-// ()8.Criar um método que imprima no console a cidade de menor nome entre todos os
+// (X)8.Criar um método que imprima no console a cidade de menor nome entre todos os
 // estados, seguido do seu UF. Exemplo: “Nome da Cidade - UF".
 
 import functions from "./functions/functions.js";

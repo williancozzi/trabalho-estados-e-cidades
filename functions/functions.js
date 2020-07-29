@@ -3,6 +3,8 @@ import { promises as fs } from "fs";
 let states;
 let cities;
 let citiesPerState = [];
+let longestNameOfBrazil = [];
+let shortestNameOfBrazil = [];
 
 async function readStatesJson() {
   try {
@@ -46,6 +48,7 @@ async function createStatesJson() {
   showLongestNames();
   showShortestNames();
   showLongestNameOfBrazil();
+  showShortestNameOfBrazil();
 }
 
 async function showState(uf) {
@@ -53,7 +56,7 @@ async function showState(uf) {
     await fs.readFile(`./states/${uf.toUpperCase()}.json`)
   );
   console.log("Iniciando aplicação...");
-  console.log(`${data.nome} tem ${data.cidades.length} municípios`);
+  console.log(`2 - ${data.nome} tem ${data.cidades.length} municípios`);
 }
 
 function showMorePopulated() {
@@ -65,7 +68,7 @@ function showMorePopulated() {
   });
 
   console.log(
-    "Estados que possuem mais cidades, seguidos da quantidade, em ordem decrescente",
+    "3 - Estados que possuem mais cidades, seguidos da quantidade, em ordem decrescente",
     citiesMappedPerState.sort((a, b) => b.quantidade - a.quantidade).slice(0, 5)
   );
 }
@@ -79,7 +82,7 @@ function showLessPopulated() {
   });
 
   console.log(
-    "Estados que possuem menos cidades, seguidos da quantidade, em ordem decrescente",
+    "4 - Estados que possuem menos cidades, seguidos da quantidade, em ordem decrescente",
     citiesMappedPerState
       .sort((a, b) => a.quantidade - b.quantidade)
       .slice(0, 5)
@@ -107,7 +110,8 @@ function showLongestNames() {
     };
   });
 
-  console.log("Cidades com os nomes mais longos de cada estado:");
+  longestNameOfBrazil = longestNamePerState;
+  console.log("5 - Cidades com os nomes mais longos de cada estado:");
   console.log(longestNamePerState);
 }
 
@@ -131,34 +135,27 @@ function showShortestNames() {
     };
   });
 
-  console.log("Cidades com os nomes mais curtos de cada estado:");
+  shortestNameOfBrazil = shortestNamePerState;
+  console.log("6 - Cidades com os nomes mais curtos de cada estado:");
   console.log(shortestNamePerState);
 }
 
 function showLongestNameOfBrazil() {
-  let longestNameOfBrazil = [];
-
-  longestNameOfBrazil = citiesPerState.map((state) => {
-    let longestName = "";
-
-    state.cidades.forEach((cidade) => {
-      if (cidade.Nome.length > longestName.length) {
-        longestName = cidade.Nome;
-      }
-    });
-
-    return {
-      cidade: longestName,
-      uf: state.sigla,
-    };
-  });
-
   longestNameOfBrazil = longestNameOfBrazil
     .sort((a, b) => b.cidade.length - a.cidade.length)
     .slice(0, 1);
 
-  console.log("Cidade de maior nome entre todos estados:");
+  console.log("7 - Cidade de maior nome entre todos estados:");
   console.log(longestNameOfBrazil);
+}
+
+function showShortestNameOfBrazil() {
+  shortestNameOfBrazil
+    .sort((a, b) => a.cidade.localeCompare(b.cidade))
+    .sort((a, b) => a.cidade.length - b.cidade.length);
+
+  console.log("8 - Cidade de menor nome entre todos estados:");
+  console.log(shortestNameOfBrazil.slice(0, 1));
 }
 
 export default {
