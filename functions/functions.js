@@ -47,7 +47,7 @@ async function createStatesJson() {
   showLessPopulated();
   showLongestNames();
   showShortestNames();
-  showLongestNameOfBrazil();
+  showLongestNameOfBrazil(true);
   showShortestNameOfBrazil();
 }
 
@@ -55,7 +55,6 @@ async function showState(uf) {
   const data = JSON.parse(
     await fs.readFile(`./states/${uf.toUpperCase()}.json`)
   );
-  console.log("Iniciando aplicação...");
   console.log(`2 - ${data.nome} tem ${data.cidades.length} municípios`);
 }
 
@@ -119,7 +118,7 @@ function showShortestNames() {
   let shortestNamePerState = [];
 
   shortestNamePerState = citiesPerState.map((state) => {
-    let shortestname = "cidade com nome longo";
+    let shortestname = showLongestNameOfBrazil(false);
 
     state.cidades.forEach((cidade) => {
       if (cidade.Nome.length < shortestname.length) {
@@ -140,13 +139,15 @@ function showShortestNames() {
   console.log(shortestNamePerState);
 }
 
-function showLongestNameOfBrazil() {
-  longestNameOfBrazil = longestNameOfBrazil
-    .sort((a, b) => b.cidade.length - a.cidade.length)
-    .slice(0, 1);
+function showLongestNameOfBrazil(show) {
+  longestNameOfBrazil.sort((a, b) => b.cidade.length - a.cidade.length);
 
-  console.log("7 - Cidade de maior nome entre todos estados:");
-  console.log(longestNameOfBrazil);
+  if (show) {
+    console.log("7 - Cidade de maior nome entre todos estados:");
+    console.log(longestNameOfBrazil[0]);
+  }
+
+  return longestNameOfBrazil[0].cidade;
 }
 
 function showShortestNameOfBrazil() {
@@ -155,7 +156,7 @@ function showShortestNameOfBrazil() {
     .sort((a, b) => a.cidade.length - b.cidade.length);
 
   console.log("8 - Cidade de menor nome entre todos estados:");
-  console.log(shortestNameOfBrazil.slice(0, 1));
+  console.log(shortestNameOfBrazil[0]);
 }
 
 export default {
