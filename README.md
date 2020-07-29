@@ -5,7 +5,7 @@ Create a Node.js backend application that is dumb, does not acts as a server and
 
 To exercise some concepts learnt in 'Unit 02' as:
  - Node.js
- - project creation;
+ -- project creation;
  - file system;
  - JSON objects.
  
