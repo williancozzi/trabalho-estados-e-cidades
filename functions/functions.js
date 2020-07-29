@@ -41,7 +41,6 @@ async function createStatesJson() {
     fs.writeFile(`./states/${state.Sigla}.json`, JSON.stringify(mappedStates));
   });
 
-  // chama as functions que mostram os estados com mais e menos cidades na ordem decrescente
   showMorePopulated();
   showLessPopulated();
   showLongestNames();
@@ -145,8 +144,6 @@ function showLongestNameOfBrazil() {
     state.cidades.forEach((cidade) => {
       if (cidade.Nome.length > longestName.length) {
         longestName = cidade.Nome;
-      } else if (cidade.Nome.length === longestName.length) {
-        longestNameOfBrazil.sort((a, b) => a.cidade.Nome - b.cidade.Nome);
       }
     });
 
@@ -157,7 +154,7 @@ function showLongestNameOfBrazil() {
   });
 
   longestNameOfBrazil = longestNameOfBrazil
-    .sort((a, b) => a.cidade.nome - b.cidade.nome)
+    .sort((a, b) => b.cidade.length - a.cidade.length)
     .slice(0, 1);
 
   console.log("Cidade de maior nome entre todos estados:");
