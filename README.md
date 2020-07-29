@@ -5,9 +5,9 @@ Create a Node.js backend application that is dumb, does not acts as a server and
 
 To exercise some concepts learnt in 'Unit 02' as:
  - Node.js
- -- project creation;
- - file system;
- - JSON objects.
+   - project creation;
+   - file system;
+   - JSON objects.
  
 ## Requirements
 Download files Cidades.json and Estados.json from https://github.com/felipefdl/cidades-estados-brasil-json to use within the project.
